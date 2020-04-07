@@ -54,6 +54,10 @@ Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
 
+Contact.prototype.fullAddress = function() {
+  return this.streetName + " " + this.cityName + " " + this.stateName + " " + this.zipCode;
+}
+
 // User Interface Logic
 var addressBook = new AddressBook();
 
@@ -61,7 +65,7 @@ function displayContactDetails(addressBookToDisplay) {
   var contactsList = $("ul#contacts");
   var htmlForContactInfo = "";
   addressBookToDisplay.contacts.forEach(function(contact) {
-    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + "</li>";
+    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.fullName() + "</li>";
   });
   contactsList.html(htmlForContactInfo);
 };
